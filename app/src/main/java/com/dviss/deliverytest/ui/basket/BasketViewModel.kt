@@ -1,13 +1,13 @@
-package com.dviss.deliverytest.ui.notifications
+package com.dviss.deliverytest.ui.basket
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class BasketViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is basket Fragment"
     }
     val text: LiveData<String> = _text
 }
