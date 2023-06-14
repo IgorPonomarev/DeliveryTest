@@ -1,4 +1,4 @@
-package com.dviss.deliverytest.data.local.entity
+package com.dviss.deliverytest.data.local.catalog.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

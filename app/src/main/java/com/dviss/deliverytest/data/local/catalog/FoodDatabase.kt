@@ -1,11 +1,11 @@
-package com.dviss.deliverytest.data.local
+package com.dviss.deliverytest.data.local.catalog
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.dviss.deliverytest.data.local.entity.CategoryEntity
-import com.dviss.deliverytest.data.local.entity.DishEntity
-import com.dviss.deliverytest.data.local.entity.TagsConverter
+import com.dviss.deliverytest.data.local.catalog.entity.CategoryEntity
+import com.dviss.deliverytest.data.local.catalog.entity.DishEntity
+import com.dviss.deliverytest.data.local.catalog.entity.TagsConverter
 
 @Database(
     entities = [

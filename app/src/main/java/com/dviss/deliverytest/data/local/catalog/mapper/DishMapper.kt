@@ -1,6 +1,6 @@
-package com.dviss.deliverytest.data.local.mapper
+package com.dviss.deliverytest.data.local.catalog.mapper
 
-import com.dviss.deliverytest.data.local.entity.DishEntity
+import com.dviss.deliverytest.data.local.catalog.entity.DishEntity
 import com.dviss.deliverytest.domain.model.Dish
 
 fun DishEntity.toDish(): Dish {

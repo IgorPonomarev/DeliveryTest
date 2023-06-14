@@ -1,6 +1,6 @@
-package com.dviss.deliverytest.data.local.mapper
+package com.dviss.deliverytest.data.local.catalog.mapper
 
-import com.dviss.deliverytest.data.local.entity.CategoryEntity
+import com.dviss.deliverytest.data.local.catalog.entity.CategoryEntity
 import com.dviss.deliverytest.domain.model.Category
 
 fun CategoryEntity.toCategory(): Category {

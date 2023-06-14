@@ -1,10 +1,10 @@
 package com.dviss.deliverytest.data.repository
 
-import com.dviss.deliverytest.data.local.FoodDao
-import com.dviss.deliverytest.data.local.mapper.toCategory
-import com.dviss.deliverytest.data.local.mapper.toCategoryEntity
-import com.dviss.deliverytest.data.local.mapper.toDish
-import com.dviss.deliverytest.data.local.mapper.toDishEntity
+import com.dviss.deliverytest.data.local.catalog.FoodDao
+import com.dviss.deliverytest.data.local.catalog.mapper.toCategory
+import com.dviss.deliverytest.data.local.catalog.mapper.toCategoryEntity
+import com.dviss.deliverytest.data.local.catalog.mapper.toDish
+import com.dviss.deliverytest.data.local.catalog.mapper.toDishEntity
 import com.dviss.deliverytest.domain.model.Category
 import com.dviss.deliverytest.domain.model.Dish
 import com.dviss.deliverytest.domain.remote.CategoryService

@@ -2,12 +2,15 @@ package com.dviss.deliverytest.data.di
 
 import android.app.Application
 import androidx.room.Room
-import com.dviss.deliverytest.data.local.FoodDatabase
+import com.dviss.deliverytest.data.local.cart.CartDatabase
+import com.dviss.deliverytest.data.local.catalog.FoodDatabase
 import com.dviss.deliverytest.data.remote.category.CategoryServiceImpl
 import com.dviss.deliverytest.data.remote.dishes.DishServiceImpl
+import com.dviss.deliverytest.data.repository.CartRepositoryImpl
 import com.dviss.deliverytest.data.repository.FoodRepositoryImpl
 import com.dviss.deliverytest.domain.remote.CategoryService
 import com.dviss.deliverytest.domain.remote.DishService
+import com.dviss.deliverytest.domain.repository.CartRepository
 import com.dviss.deliverytest.domain.repository.FoodRepository
 import dagger.Module
 import dagger.Provides
@@ -30,6 +33,7 @@ class DataModule {
 
     //=================================== Local ==========================================
 
+    //Food Database
     @Provides
     @Singleton
     fun provideFoodDatabase(app: Application): FoodDatabase {
@@ -37,6 +41,17 @@ class DataModule {
             app,
             FoodDatabase::class.java,
             "food_db"
+        ).build()
+    }
+
+    //Cart Database
+    @Provides
+    @Singleton
+    fun provideCartDatabase(app: Application): CartDatabase {
+        return Room.databaseBuilder(
+            app,
+            CartDatabase::class.java,
+            "cart_db"
         ).build()
     }
 
@@ -75,6 +90,7 @@ class DataModule {
     
     //================================ Repository =======================================
 
+    //Food repository
     @Provides
     @Singleton
     fun provideFoodRepository(
@@ -83,5 +99,14 @@ class DataModule {
         categoryService: CategoryService
     ): FoodRepository {
         return FoodRepositoryImpl(db.dao, categoryService, dishService)
+    }
+
+    //Cart repository
+    @Provides
+    @Singleton
+    fun provideCartRepository(
+        db: CartDatabase
+    ): CartRepository {
+        return CartRepositoryImpl(db.dao)
     }
 }

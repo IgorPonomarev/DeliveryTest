@@ -1,11 +1,11 @@
-package com.dviss.deliverytest.data.local
+package com.dviss.deliverytest.data.local.catalog
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dviss.deliverytest.data.local.entity.CategoryEntity
-import com.dviss.deliverytest.data.local.entity.DishEntity
+import com.dviss.deliverytest.data.local.catalog.entity.CategoryEntity
+import com.dviss.deliverytest.data.local.catalog.entity.DishEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
