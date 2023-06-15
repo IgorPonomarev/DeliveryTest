@@ -1,20 +1,26 @@
 package com.dviss.deliverytest.data.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.dviss.deliverytest.data.local.cart.CartDatabase
 import com.dviss.deliverytest.data.local.catalog.FoodDatabase
+import com.dviss.deliverytest.data.location.LocationServiceImpl
 import com.dviss.deliverytest.data.remote.category.CategoryServiceImpl
 import com.dviss.deliverytest.data.remote.dishes.DishServiceImpl
 import com.dviss.deliverytest.data.repository.CartRepositoryImpl
 import com.dviss.deliverytest.data.repository.FoodRepositoryImpl
+import com.dviss.deliverytest.domain.location.LocationService
 import com.dviss.deliverytest.domain.remote.CategoryService
 import com.dviss.deliverytest.domain.remote.DishService
 import com.dviss.deliverytest.domain.repository.CartRepository
 import com.dviss.deliverytest.domain.repository.FoodRepository
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -108,5 +114,22 @@ class DataModule {
         db: CartDatabase
     ): CartRepository {
         return CartRepositoryImpl(db.dao)
+    }
+
+    //================================= Location ============================================
+
+    @Provides
+    @Singleton
+    fun provideFusedLocationProviderClient(@ApplicationContext appContext: Context): FusedLocationProviderClient {
+        return LocationServices.getFusedLocationProviderClient(appContext)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocationService(
+        @ApplicationContext appContext: Context,
+        client: FusedLocationProviderClient
+    ): LocationService {
+        return LocationServiceImpl(appContext, client)
     }
 }
