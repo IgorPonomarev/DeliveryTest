@@ -10,6 +10,13 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import android.content.Context
+import com.dviss.deliverytest.domain.repository.CartRepository
+import com.dviss.deliverytest.domain.repository.FoodRepository
+import com.dviss.deliverytest.domain.usecase.AddDishToCart
+import com.dviss.deliverytest.domain.usecase.DownloadCategories
+import com.dviss.deliverytest.domain.usecase.DownloadDishes
+import com.dviss.deliverytest.domain.usecase.GetCategories
+import com.dviss.deliverytest.domain.usecase.GetDishes
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -19,10 +26,17 @@ class DomainModule {
     @Provides
     fun provideUseCases(
         @ApplicationContext appContext: Context,
-        locationService: LocationService
+        locationService: LocationService,
+        foodRepository: FoodRepository,
+        cartRepository: CartRepository
     ): AppUseCases {
         return AppUseCases(
-            getLocation = GetLocation(appContext, locationService)
+            getLocation = GetLocation(appContext, locationService),
+            getCategories = GetCategories(foodRepository),
+            downloadCategories = DownloadCategories(foodRepository),
+            getDishes = GetDishes(foodRepository),
+            downloadDishes = DownloadDishes(foodRepository),
+            addDishToCart = AddDishToCart(cartRepository)
         )
     }
 }

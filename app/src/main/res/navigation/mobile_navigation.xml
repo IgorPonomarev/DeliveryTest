@@ -9,7 +9,16 @@
         android:id="@+id/navigation_home"
         android:name="com.dviss.deliverytest.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_categoryMenu"
+            app:destination="@id/navigation_categoryMenu">
+            <argument
+                android:name="category"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
@@ -26,6 +35,21 @@
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.dviss.deliverytest.ui.account.AccountFragment"
-        android:label="@string/title_basket"
+        android:label="@string/title_account"
         tools:layout="@layout/fragment_basket" />
+    <fragment
+        android:id="@+id/navigation_categoryMenu"
+        android:name="com.dviss.deliverytest.ui.category.CategoryMenu"
+        android:label="CategoryMenu"
+        tools:layout="@layout/fragment_category_menu">
+        <action
+            android:id="@+id/action_navigation_categoryMenu_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="category"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 </navigation>

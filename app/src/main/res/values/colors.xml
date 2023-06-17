@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--custom colors-->
-    <color name="blue_200">#99B2F0</color>
-    <color name="blue_500">#3364E0</color>
-    <color name="blue_700">#2752D8</color>\
+    <color name="blue_200">#FF99B2F0</color>
+    <color name="blue_500">#FF3364E0</color>
+    <color name="blue_700">#FF2752D8</color>
+    <color name="dish_background">#FFF8F7F5</color>
 </resources>
