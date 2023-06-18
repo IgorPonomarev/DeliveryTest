@@ -18,6 +18,7 @@ import com.dviss.deliverytest.domain.model.Dish
 import com.dviss.deliverytest.ui.category.recycler.CategoryMenuAdapter
 import com.dviss.deliverytest.ui.category.recycler.GridSpacingItemDecoration
 import com.dviss.deliverytest.ui.category.dishdialog.DishDialogFragment
+import com.google.android.material.chip.Chip
 
 class CategoryMenu : Fragment(), CategoryMenuAdapter.OnItemClickListener {
 
@@ -54,6 +55,34 @@ class CategoryMenu : Fragment(), CategoryMenuAdapter.OnItemClickListener {
             categoryTextView.text = it.categoryTitle
         }
 
+        //============================ Chips ============================
+
+        val choiceChipsContainer = binding.choiceChipsContainer
+
+        categoryMenuViewModel.state.observe(viewLifecycleOwner) { state ->
+            val choices = state.dishes.flatMap { it.tags }.toSet().toList()
+            if (choices.isNotEmpty() && state.selectedTag == "") {
+                categoryMenuViewModel.updateSelectedTag(choices[0])
+            }
+            choiceChipsContainer.removeAllViews()
+            choices.forEach  { choice ->
+                val chip = Chip(context)
+                chip.text = choice
+                chip.chipBackgroundColor = resources.getColorStateList(R.color.dish_background, null)
+                choiceChipsContainer.addView(chip)
+                if (choice == state.selectedTag) {
+                    chip.isSelected = true
+                    chip.chipBackgroundColor = resources.getColorStateList(R.color.blue_500, null)
+                    chip.setTextColor(resources.getColorStateList(R.color.white, null))
+                }
+                chip.setOnClickListener {
+                    categoryMenuViewModel.updateSelectedTag(choice)
+                }
+            }
+        }
+
+        //============================ Recycler ============================
+
         categoryMenuAdapter = CategoryMenuAdapter(this)
         val recyclerView: RecyclerView = binding.categoryMenuRecyclerView
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
@@ -72,7 +101,9 @@ class CategoryMenu : Fragment(), CategoryMenuAdapter.OnItemClickListener {
 
         // Set the categories list to recyclerview adapter
         categoryMenuViewModel.state.observe(viewLifecycleOwner) { state ->
-            categoryMenuAdapter.setItems(state.dishes)
+            categoryMenuAdapter.setItems(state.dishes.filter { dish ->
+                dish.tags.contains(state.selectedTag)
+            })
         }
 
         return root

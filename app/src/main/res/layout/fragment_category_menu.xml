@@ -20,9 +20,9 @@
             android:id="@+id/back_button"
             android:layout_width="58dp"
             android:layout_height="match_parent"
+            android:background="#0000"
             android:contentDescription="icon_back"
-            android:src="@drawable/ic_back"
-            android:background="#0000">
+            android:src="@drawable/ic_back">
 
         </ImageButton>
 
@@ -30,11 +30,11 @@
             android:id="@+id/categoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="@font/sfprodisplaymedium"
             android:textColor="@color/black"
             android:textSize="18sp"
-            tools:text="Азиатская кухня"
-            android:layout_gravity="center"/>
+            tools:text="Азиатская кухня" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="44dp"
@@ -54,6 +54,29 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <HorizontalScrollView
+        android:id="@+id/chipsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="7dp"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryMenuTopAppBar">
+
+        <!-- Child layout to hold the choice chips -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/choiceChipsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:chipSpacingHorizontal="8dp">
+
+            <!-- Choice chips will be dynamically added here -->
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryMenuRecyclerView"
         android:layout_width="match_parent"
@@ -62,6 +85,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categoryMenuTopAppBar" />
+        app:layout_constraintTop_toBottomOf="@id/chipsScrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

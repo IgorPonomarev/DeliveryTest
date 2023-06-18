@@ -8,5 +8,6 @@ import java.util.Locale
 
 data class CategoryMenuUiState(
     val categoryTitle: String = "",
-    val dishes: List<Dish> = emptyList()
+    val dishes: List<Dish> = emptyList(),
+    val selectedTag: String = ""
 )

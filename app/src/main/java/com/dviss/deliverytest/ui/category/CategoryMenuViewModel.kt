@@ -51,4 +51,10 @@ class CategoryMenuViewModel @Inject constructor(
             useCases.addDishToCart(dish)
         }
     }
+
+    fun updateSelectedTag(tag: String) {
+        val currentState = _state.value ?: CategoryMenuUiState()
+        val updatedState = currentState.copy(selectedTag = tag)
+        _state.value = updatedState
+    }
 }
