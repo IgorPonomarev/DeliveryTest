@@ -27,34 +27,34 @@
                 android:id="@+id/geoPositionIconImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
                 android:src="@drawable/ic_location" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/locationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfprodisplaymedium"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:fontFamily="@font/sfprodisplaymedium"
                     tools:text="Санкт-Петербург" />
 
                 <TextView
                     android:id="@+id/dateTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:alpha="0.5"
                     android:fontFamily="@font/sfprodisplayregular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
                     tools:text="12 Августа, 2023" />
 
             </LinearLayout>
@@ -65,8 +65,8 @@
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_gravity="end"
-            app:cardCornerRadius="22dp"
-            android:layout_marginEnd="16dp">
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="22dp">
 
             <ImageView
                 android:id="@+id/userPhotoImageView"
@@ -79,14 +79,20 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingHorizontal="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
