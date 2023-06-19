@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
@@ -41,6 +42,8 @@ class DishDialogFragment(
             dialogView.findViewById(R.id.dialogDishDescriptionTextView)
         val dishDialogConfirmButton: Button =
             dialogView.findViewById(R.id.dialogDishAddToCartButton)
+        val dishDialogCloseIcon: ImageButton =
+            dialogView.findViewById(R.id.dialogDishCloseImageButton)
 
         dishNameTextView.text = dish.name
         dishPriceTextView.text = dish.price.toInt().toString() + " ₽"
@@ -59,6 +62,10 @@ class DishDialogFragment(
 
         dishDialogConfirmButton.setOnClickListener {
             categoryMenuViewModel.addDishToCart(dish)
+            dismiss()
+        }
+
+        dishDialogCloseIcon.setOnClickListener {
             dismiss()
         }
 

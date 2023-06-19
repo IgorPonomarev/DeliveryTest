@@ -29,6 +29,26 @@
 
     </androidx.cardview.widget.CardView>
 
+    <ImageButton
+        android:id="@+id/dialogDishCloseImageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/shape_icon_button"
+        android:src="@drawable/ic_close"
+        android:layout_margin="8dp"/>
+
+    <ImageButton
+        android:id="@+id/dialogDishFavouriteImageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/dialogDishCloseImageButton"
+        android:background="@drawable/shape_icon_button"
+        android:src="@drawable/ic_favourite"
+        android:layout_margin="8dp"/>
+
     <TextView
         android:id="@+id/dialogDishNameTextView"
         android:layout_width="match_parent"
