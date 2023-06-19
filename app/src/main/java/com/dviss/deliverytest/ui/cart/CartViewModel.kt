@@ -62,8 +62,8 @@ class CartViewModel @Inject constructor(
                 CartItemUiModel(
                     id = dish.id,
                     name = dish.name,
-                    price = dish.price.toString() + " ₽",
-                    weight = " · " + dish.weight.toString() + "г",
+                    price = dish.price.toInt(),
+                    weight = dish.weight.toInt(),
                     imageUrl = dish.imageUrl,
                     count = cartItem.number
                 )
@@ -81,5 +81,13 @@ class CartViewModel @Inject constructor(
         viewModelScope.launch {
             useCases.editCartItemCount(item.toCartItem(), item.count - 1)
         }
+    }
+
+    fun calculateTotalPrice(): String {
+        var totalPrice = 0
+        state.value?.cartUiItems?.forEach { item ->
+            totalPrice += item.count * item.price
+        }
+        return totalPrice.toString()
     }
 }

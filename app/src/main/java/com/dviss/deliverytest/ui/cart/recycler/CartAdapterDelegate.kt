@@ -53,8 +53,8 @@ class CartAdapterDelegate(
 
             fun bind(item: CartItemUiModel) {
                 nameTextView.text = item.name
-                priceTextView.text = item.price
-                weightTextView.text = item.weight
+                priceTextView.text = item.price.toString() + " ₽"
+                weightTextView.text = " · " + item.weight.toString() + "г"
                 counterTextView.text = item.count.toString()
 
                 //load image

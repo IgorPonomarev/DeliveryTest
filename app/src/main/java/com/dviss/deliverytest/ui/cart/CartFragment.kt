@@ -58,6 +58,12 @@ class CartFragment : Fragment(), CartAdapter.OnItemClickListener {
             cartAdapter.setItems(it.cartUiItems)
         }
 
+        //======================== button ==============================
+        val button: TextView = binding.cartPayButton
+        cartViewModel.state.observe(viewLifecycleOwner) {
+            button.text = getString(R.string.pay, cartViewModel.calculateTotalPrice())
+        }
+
         return root
     }
 

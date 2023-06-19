@@ -18,8 +18,8 @@ data class CartUiState(
 data class CartItemUiModel(
     val id: Int,
     val name: String,
-    val price: String,
-    val weight: String,
+    val price: Int,
+    val weight: Int,
     val imageUrl: String,
     val count: Int
 )
