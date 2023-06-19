@@ -7,4 +7,6 @@ data class AppUseCases(
     val getDishes: GetDishes,
     val downloadDishes: DownloadDishes,
     val addDishToCart: AddDishToCart,
+    val getCartItems: GetCartItems,
+    val editCartItemCount: EditCartItemCount,
 )

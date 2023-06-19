@@ -27,16 +27,16 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_basket"
-        android:name="com.dviss.deliverytest.ui.basket.BasketFragment"
+        android:id="@+id/navigation_cart"
+        android:name="com.dviss.deliverytest.ui.cart.CartFragment"
         android:label="@string/title_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.dviss.deliverytest.ui.account.AccountFragment"
         android:label="@string/title_account"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_categoryMenu"
         android:name="com.dviss.deliverytest.ui.category.CategoryMenu"

@@ -1,12 +1,13 @@
-package com.dviss.deliverytest.ui.home.recycler
+package com.dviss.deliverytest.ui.cart.recycler
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dviss.deliverytest.domain.model.Category
+import com.dviss.deliverytest.ui.cart.CartItemUiModel
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 
 
-class CategoryAdapter(
+class CartAdapter(
     onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -14,7 +15,7 @@ class CategoryAdapter(
     private val delegatesManager: AdapterDelegatesManager<List<Any>> = AdapterDelegatesManager()
 
     init {
-        delegatesManager.addDelegate(CategoryAdapterDelegate(onItemClickListener))
+        delegatesManager.addDelegate(CartAdapterDelegate(onItemClickListener))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -40,6 +41,7 @@ class CategoryAdapter(
     }
 
     interface OnItemClickListener {
-        fun onCategoryItemClick(category: Category)
+        fun onPlusClick(item: CartItemUiModel)
+        fun onMinusClick(item: CartItemUiModel)
     }
 }

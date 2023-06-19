@@ -15,6 +15,8 @@ import com.dviss.deliverytest.domain.repository.FoodRepository
 import com.dviss.deliverytest.domain.usecase.AddDishToCart
 import com.dviss.deliverytest.domain.usecase.DownloadCategories
 import com.dviss.deliverytest.domain.usecase.DownloadDishes
+import com.dviss.deliverytest.domain.usecase.EditCartItemCount
+import com.dviss.deliverytest.domain.usecase.GetCartItems
 import com.dviss.deliverytest.domain.usecase.GetCategories
 import com.dviss.deliverytest.domain.usecase.GetDishes
 
@@ -36,7 +38,9 @@ class DomainModule {
             downloadCategories = DownloadCategories(foodRepository),
             getDishes = GetDishes(foodRepository),
             downloadDishes = DownloadDishes(foodRepository),
-            addDishToCart = AddDishToCart(cartRepository)
+            addDishToCart = AddDishToCart(cartRepository),
+            getCartItems = GetCartItems(cartRepository),
+            editCartItemCount = EditCartItemCount(cartRepository)
         )
     }
 }
